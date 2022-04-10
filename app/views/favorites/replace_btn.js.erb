@@ -1,0 +1,5 @@
+<%# 非同期いいね機能修正箇所 %>
+<%# データ探索がfindになっている %>
+<%# データ探索がfindになっている %>
+<%# ('.favorite-<%= favorite.book_id >').text("<%= j(render 'favorites/btn',  book: favorite.book ) >")%>
+$('.favorite-<%= @favorite.book_id %>').html("<%= j(render 'favorites/btn',  book: @favorite.book ) %>")

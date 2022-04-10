@@ -16,7 +16,7 @@ class User < ApplicationRecord
   
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   # フォロー・フォロワー機能修正箇所
-  # アソシエーションに中間テーブルを介していない
+  # アソシエーションに中間テーブルを介していないgi
   # - has_many :followings, source: :followed
   has_many :followings, through: :relationships, source: :followed
 
