@@ -1,4 +1,10 @@
-<%= form_with(model:[book, book_comment], local: true) do |f| %>
-  <%= f.text_area :body, rows:'5',placeholder: "コメントをここに", class: "w-100" %>
+<%# 非同期コメント機能修正箇所 %>
+<%# 通信がHTML形式 %>
+<%# form_with(model:[book, book_comment], local: true) do |f| %>
+<%= form_with model: [book, book_comment], local: false do |f|%>
+  <%# 非同期コメント機能修正箇所 %>
+  <%# id="comment__textarea"を持つ要素が不適当 %>
+  <%# f.text_area :body, rows:'5',placeholder: "コメントをここに", class: "w-100" %>
+  <%= f.text_area :body, rows:'5',placeholder: "コメントをここに", class: "w-100 comment-textarea" %>
   <%= f.submit "送信する", class: "btn btn-lg btn-success" %>
 <% end %>
