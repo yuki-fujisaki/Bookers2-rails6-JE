@@ -1,0 +1,8 @@
+<%# # 非同期コメント機能修正箇所 %>
+<%# jsファイル全ての引数指定がローカル変数になっている %>
+
+<%# $('.book-comments-counter').html("<%= j(render 'book_comments/counter', book: comment.book) >") %>
+<%# $('.book-comments-index').html("<%= j(render 'book_comments/index', book: comment.book) >") %>
+
+$('.book-comments-counter').html("<%= j(render 'book_comments/counter', book: @comment.book) %>")
+$('.book-comments-index').html("<%= j(render 'book_comments/index', book: @comment.book) %>")
