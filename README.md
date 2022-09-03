@@ -1,10 +1,13 @@
 # ブランチ説明
 
-## product_a
-- SNS系
-## product_b
-- 記録系
-## product_c
-- コミュニティ系
-## product_d
-- レビュー系
+## devise 
+- パスワードの変更機能・日本語化
+## acts_as_taggable_on
+- タグ追加機能
+## ransack
+- 複数条件を用いた検索機能
+## slick 
+- slickによる組み込み画像スライドショー機能
+## google_maps_platform
+- マイページに自分の住所の地図を導入
+
