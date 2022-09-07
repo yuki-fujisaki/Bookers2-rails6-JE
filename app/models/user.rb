@@ -24,8 +24,15 @@ class User < ApplicationRecord
   
   has_one_attached :profile_image
 
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :introduction, length: { maximum: 50 }
+
+  validates :postal_code, presence: true
+  validates :prefecture_code, presence: true
+  validates :street, presence: true
   
   def follow(user)
     relationships.create(followed_id: user.id)
