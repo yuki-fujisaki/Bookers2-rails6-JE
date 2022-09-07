@@ -54,3 +54,10 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
+
+gem 'dotenv-rails'
+
+gem 'geocoder' # 緯度、軽度を自動計算してくれるgem
+
+gem 'jp_prefecture' # 都道府県コードから都道府県名を変換するgem
+gem 'jquery-rails' # RailsでjQueryを使えるようにするgem
