@@ -11,4 +11,30 @@
       <%= render 'books/index',books: @books %>
     </div>
   </div>
+  
+  <% if current_user %>
+    <h3>Your Map</h3>
+    <div class="map">
+      <div id="map">
+      </div>
+    </div>
+
+    <div type="text/javascript">
+    <style>
+    #map {
+      height: 600px;
+      width: 600px;
+    }
+    </style>
+      <script>
+        function initMap(){
+          let map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: <%= @user.latitude %>, lng: <%= @user.longitude %> },
+          zoom: 15
+          });
+        }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
+    </div>
+  <% end %>
 </div>
