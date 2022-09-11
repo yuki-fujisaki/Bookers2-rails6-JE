@@ -39,10 +39,23 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
+  def detail_search
+    @q = Book.ransack(params[:q])
+  end
+
+  def search_results
+    @q = Book.ransack(params[:q])
+    @searches = @q.result(distinct: true)
+  end
+
   private
 
   def book_params
     params.require(:book).permit(:title, :body)
+  end
+
+  def search_params
+    params.require(:q).permit!
   end
 
   def ensure_correct_user
