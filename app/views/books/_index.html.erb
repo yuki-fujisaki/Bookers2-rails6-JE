@@ -1,3 +1,14 @@
+<h4>タグ一覧</h3>
+<div class= p-2>
+<% if @tags.present? %>
+    <% @tags.each do |tag| %> 
+      <span class="badge badge-secondary mr-1 p-2"><%= link_to "#{tag.name}(#{tag.taggings_count})", books_path(tag_name: tag.name), class: "text-white" %></span>
+    <% end %>
+  <% else %>
+  <p> 登録されているタグはありません</p>
+<% end %>
+</div>
+
 <table class='table table-hover table-inverse'>
   <thead>
     <tr>
@@ -16,6 +27,7 @@
         </td>
         <td><%= link_to book.title,book, class: "book_#{book.id}" %></td>
         <td><%= book.body %></td>
+        <td><%= render 'books/tag_list', tag_list: book.tag_list %></td>
         <td class=<%= "favorite-" + book.id.to_s %> >
             <%= render "favorites/btn", book: book %>
         </td>
