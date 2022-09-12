@@ -10,6 +10,10 @@ class BooksController < ApplicationController
   def index
     @books = Book.all
     @book = Book.new
+    @tags = Book.tag_counts_on(:tags).most_used(20) 
+    if params[:tag_name]   # タグ検索用
+      @books = Book.tagged_with("#{params[:tag_name]}")   # タグに紐付く投稿
+    end
   end
 
   def create
@@ -42,7 +46,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:title, :body, :tag_list)
   end
 
   def ensure_correct_user
